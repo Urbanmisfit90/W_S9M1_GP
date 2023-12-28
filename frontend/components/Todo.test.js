@@ -18,11 +18,11 @@ describe('Todos Component', () => {
     render(<Todo />)
     user = userEvent.setup()
     await waitFor(() => {
-     laundry = screen.getByText('laundry')
-     dishes = screen.getByText('dishes')
-     groceries = screen.getByText('groceries')
-     input = screen.getAllByPlaceholderText('type todo')
-   })
+      laundry = screen.getByText('laundry')
+      dishes = screen.getByText('dishes')
+      groceries = screen.getByText('groceries')
+      input = screen.getByPlaceholderText('type todo')
+    })
   })
 
   test('all todos are present', async () => {
@@ -58,15 +58,15 @@ describe('Todos Component', () => {
     await waitFor(() => {
       learnJS = screen.getByText('Learn JavaScript')
     })
-  //  await user.click(learnJS)
-  //  await waitFor(() => {
-    //   expect(screen.queryByText('Learn JavaScript')).not.toBeInTheDocument()
-    //   screen.getByText('Learn JavaScript ✔️')
-    // })
-    // await user.click(learnJS.nextSibling)
-    // await waitFor(() => {
-    //   expect(learnJS).not.toBeInTheDocument()
-   // })
+    await user.click(learnJS)
+    await waitFor(() => {
+      expect(screen.queryByText('Learn JavaScript')).not.toBeInTheDocument()
+      screen.getByText('Learn JavaScript ✔️')
+    })
+    await user.click(learnJS.nextSibling)
+    await waitFor(() => {
+      expect(learnJS).not.toBeInTheDocument()
+    })
     // screen.debug()
   })
 })
